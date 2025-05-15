@@ -1,0 +1,64 @@
+{
+  "name": "context3d-model-mcp-server",
+  "version": "0.1.0",
+  "description": "MCP server for generating 3D models",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "context3d-model-mcp-server": "./build/index.js"
+  },
+  "files": [
+    "build",
+    "README.md"
+  ],
+  "scripts": {
+    "start": "node dist/index.js",
+    "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
+    "prepare": "npm run build",
+    "watch": "tsc --watch",
+    "inspector": "npx @modelcontextprotocol/inspector build/index.js",
+    "release": "changeset publish && git push --follow-tags"
+  },
+  "keywords": [
+    "3d model",
+    "mcp",
+    "typescript"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "packageManager": "pnpm@10.10.0",
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Context3D/context3d-model-mcp-server.git"
+  },
+  "dependencies": {
+    "@fastify/cors": "^11.0.1",
+    "@fastify/helmet": "^13.0.1",
+    "@google/genai": "^0.8.0",
+    "@google/generative-ai": "^0.24.0",
+    "@modelcontextprotocol/sdk": "^1.4.1",
+    "axios": "^1.9.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "fastify": "^5.3.3",
+    "form-data": "^4.0.0",
+    "helmet": "^8.1.0",
+    "mime": "^3.0.0",
+    "minimatch": "^10.0.1",
+    "node-fetch": "^3.3.2",
+    "puppeteer": "^24.6.1",
+    "zod": "^3.24.3"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.18",
+    "@types/express": "^5.0.1",
+    "@types/mime": "^3.0.4",
+    "@types/node": "^20.17.30",
+    "@types/node-fetch": "^2.6.12",
+    "typescript": "^5.8.3"
+  }
+}
