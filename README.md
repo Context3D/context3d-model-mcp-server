@@ -36,40 +36,6 @@ This repository's focus is the MCP server, which includes a secure authenticatio
 
 This repository focuses on the MCP Server component, which interacts with the core Context3D Cloud Service.
 
-### System Components
-
-The system involves client applications, the Context3D MCP Server (this repository), and the core Context3D Cloud Service:
-
-```mermaid
-graph TD
-    A[Client Application] --> B[Context3D MCP Server]
-    B --> C[Context3D Cloud Service]
-
-    subgraph "Context3D MCP Server (This Repo)"
-        B
-        E[File System Tools]
-        F[Model Generation Tools (via Cloud Service)]
-        G[Blockchain Authentication]
-    end
-
-    subgraph "Context3D Cloud Service (Core Services)"
-        C
-        H[API Gateway]
-        I[Generation Service]
-        J[Asset Processing Service]
-    end
-
-    B --> E
-    B --> F
-    B --> G
-    C --> H
-    C --> I
-    C --> J
-    H --> I
-    H --> J
-    I --> J
-```
-
 ### Core Context3D Cloud Service Pipeline (Detailed in plant.md)
 
 The core Context3D Cloud Service utilizes a multi-stage pipeline:
