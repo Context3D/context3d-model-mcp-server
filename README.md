@@ -165,7 +165,7 @@ graph TD
 Follow these steps to integrate the Context3D MCP server with Claude Desktop:
 
 1. **Install Claude Desktop**:
-   - Download the latest version of Claude Desktop from the official website (https://claude.ai/desktop)
+   - Download the latest version of Claude Desktop from the official website ([https://claude.ai/download](https://claude.ai/download))
    - Follow the installation prompts for your operating system (Windows, macOS, or Linux)
    - Complete the installation and launch Claude Desktop
    - Sign in with your Anthropic account credentials if prompted
