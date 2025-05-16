@@ -166,7 +166,7 @@ Follow these steps to integrate the Context3D MCP server with Claude Desktop:
 
 1. **Install Claude Desktop**:
    - Download the latest version of Claude Desktop from the official website ([https://claude.ai/download](https://claude.ai/download))
-   - Follow the installation prompts for your operating system (Windows, macOS, or Linux)
+   - Follow the installation prompts for your operating system (Windows, macOS)
    - Complete the installation and launch Claude Desktop
    - Sign in with your Anthropic account credentials if prompted
 
@@ -189,7 +189,7 @@ Follow these steps to integrate the Context3D MCP server with Claude Desktop:
      ```bash
      pnpm build
      ```
-   - Create or update the Claude configuration file. On Windows, this is typically located at `%APPDATA%\Claude\config.json`. On macOS, it's at `~/Library/Application Support/Claude/config.json`. On Linux, it's at `~/.config/Claude/config.json`.
+   - Create or update the Claude configuration file. On Windows, this is typically located at `%APPDATA%\Claude\claude_desktop_config.json`. On macOS, it's at `~/Library/Application Support/Claude/claude_desktop_config.json`.
    - Add the following JSON configuration, making sure to replace the path with your actual build directory path:
      ```json
      {
