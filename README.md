@@ -36,6 +36,40 @@ This repository's focus is the MCP server, which includes a secure authenticatio
 
 This repository focuses on the MCP Server component, which interacts with the core Context3D Cloud Service.
 
+### System Components
+
+The system involves client applications, the Context3D MCP Server (this repository), and the core Context3D Cloud Service:
+
+```mermaid
+graph TD
+    A[Client Application] --> B[Context3D MCP Server]
+    B --> C[Context3D Cloud Service]
+
+    subgraph "Context3D MCP Server (This Repo)"
+        B
+        E[File System Tools]
+        F[Model Generation Tools (via Cloud Service)]
+        G[Blockchain Authentication]
+    end
+
+    subgraph "Context3D Cloud Service (Core Services)"
+        C
+        H[API Gateway]
+        I[Generation Service]
+        J[Asset Processing Service]
+    end
+
+    B --> E
+    B --> F
+    B --> G
+    C --> H
+    C --> I
+    C --> J
+    H --> I
+    H --> J
+    I --> J
+```
+
 ### Core Context3D Cloud Service Pipeline (Detailed in plant.md)
 
 The core Context3D Cloud Service utilizes a multi-stage pipeline:
@@ -165,23 +199,58 @@ graph TD
 Follow these steps to integrate the Context3D MCP server with Claude Desktop:
 
 1. **Install Claude Desktop**:
-   Download and install Claude Desktop from the official website.
+   - Download the latest version of Claude Desktop from the official website (https://claude.ai/desktop)
+   - Follow the installation prompts for your operating system (Windows, macOS, or Linux)
+   - Complete the installation and launch Claude Desktop
+   - Sign in with your Anthropic account credentials if prompted
 
 2. **Configure Claude Desktop**:
+   - Install Node.js (version 16 or higher) from https://nodejs.org
+   - Clone the Context3D MCP server repository:
+     ```bash
+     git clone https://github.com/Context3D/context3d-model-mcp-server
+     cd context3d-model-mcp-server
+     ```
+   - Install dependencies using your preferred package manager:
+     ```bash
+     npm install
+     # or
+     pnpm install
+     # or
+     yarn install
+     ```
+   - Build the MCP server:
+     ```bash
+     pnpm build
+     ```
+   - Create or update the Claude configuration file. On Windows, this is typically located at `%APPDATA%\Claude\config.json`. On macOS, it's at `~/Library/Application Support/Claude/config.json`. On Linux, it's at `~/.config/Claude/config.json`.
+   - Add the following JSON configuration, making sure to replace the path with your actual build directory path:
+     ```json
+     {
+       "mcpServers": {
+         "filesystem": {
+           "command": "node",
+           "args": [
+             "/full/path/to/context3d-model-mcp-server/build/index.js"
+           ],
+           "env": {
+             "SAVE_TO_DESKTOP": "true"
+           }
+         }
+       }
+     }
+     ```
+   - Save the configuration file and restart Claude Desktop
+   - Verify the MCP server is running by checking for the Context3D tools in the tools panel
 
 3. **Using the Server**:
 
----
+  - https://x.com/Context3D/status/1922998936219873558
 
-Body:
 
-```json
-{
-  "taskUuid": "task-uuid"
-}
-```
 
----
+
+  ---
 
 <div align="center">
   <p>© 2025 Context3D AI | <a href="https://context3d.ai">https://context3d.ai</a></p>
